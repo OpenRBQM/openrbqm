@@ -5,7 +5,9 @@ pkgs <- c("gsm.core",
           "gsm.endpoints",
           "gsm.template",
           "gsm.datasim",
-          "clindata")
+          "grail",
+          "gsm.reporting",
+          "gsm.app")
 
 openrbqm_attach <- function() {
   # Create `to_load` which is a character vector of all openrbqm

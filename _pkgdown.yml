@@ -1,4 +1,10 @@
 url: https://openrbqm.github.io/openrbqm/
 template:
   bootstrap: 5
+  bootswatch: yeti
+
+navbar:
+  structure:
+    left: [articles, Reports, reference, news]
+    right: [search, github]
 

@@ -36,3 +36,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://openrbqm.github.io/openrbqm/

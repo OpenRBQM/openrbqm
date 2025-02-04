@@ -74,7 +74,7 @@ openrbqm_detach <- function() {
 #' @export
 #'
 #' @examples
-#' openrbqm_packages()
+#' #openrbqm_packages()
 openrbqm_packages <- function() {
   # get all imports from openrbqm's package description file
   raw <- utils::packageDescription("openrbqm")$Imports

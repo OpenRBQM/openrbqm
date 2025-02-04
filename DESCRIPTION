@@ -1,12 +1,39 @@
 Package: openrbqm
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+Authors@R: c(
+    person("Jeremy", "Wildfire", email = "jwildfire@gmail.com", role = c("aut", "cre")),
+    person("Laura", "Maxwell", email = "lkmaxwell23@gmail.com", role = c("aut")),
+    )
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports: 
+    cli,
+    crayon,
+    gsm.core,
+    gsm.app,
+    gsm.datasim,
+    gsm.endpoints,
+    gsm.kri,
+    gsm.mapping,
+    gsm.reporting,
+    gsm.template,
+    rstudioapi,
+    utils
+Remotes:
+    gsm.core=Gilead-BioStats/gsm@gsm-core-test,
+    gsm.app==Gilead-BioStats/gsm.app,
+    gsm.datasim==Gilead-BioStats/gsm.datasim,
+    gsm.endpoints=Gilead-BioStats/gsm.endpoints,
+    gsm.kri=Gilead-BioStats/gsm.kri,
+    gsm.mapping=Gilead-BioStats/gsm.mapping,
+    gsm.reporting=Gilead-BioStats/gsm.reporting,
+    gsm.template=Gilead-BioStats/gsm.template
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

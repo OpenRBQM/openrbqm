@@ -4,7 +4,7 @@ set.seed(1234)
 # Step 0 - Simulate PK data for clindata participants
 mapped_pk <- tidyr::crossing(
     subjid = unique(clindata::rawplus_dm$subjid),
-    pktpt = c( 
+    pktpt = c(
         "Cycle 1 Day 1",
         "Cycle 1 Day 1",
         "Cycle 1 Day 1",
@@ -23,18 +23,18 @@ pk_data <-list(
 
 # Example 1 - Standard KRI with normal approximation
 pk_kri <- gsm::RunWorkflows(
-  lWorkflow = MakeWorkflowList(strName = "kri0013.yaml"), 
+  lWorkflow = MakeWorkflowList(strName = "kri0013.yaml", strPath = "inst/examples/pk", strPackage = "openrbqm"),
   lData = pk_data
 )
-Widget_BarChart(dfResults = pk_kri$Analysis_kri0013$Analysis_Summary)
+gsm.kri::Widget_BarChart(dfResults = pk_kri$Analysis_kri0013$Analysis_Summary)
 
 # Example 2 - KRI with custom flagging based on 90% threshold
 
 pk_kri_alt <- gsm::RunWorkflows(
-  lWorkflow = MakeWorkflowList(strName = "kri0013a.yaml"), 
+  lWorkflow = MakeWorkflowList(strName = "kri0013a.yaml"),
   lData = pk_data
 )
-Widget_BarChart(dfResults = pk_kri_alt$Analysis_kri0013a$Analysis_Summary)
+gsm.kri::Widget_BarChart(dfResults = pk_kri_alt$Analysis_kri0013a$Analysis_Summary)
 
 
 # Example 3 - Run Reports with other KRIs
@@ -55,7 +55,7 @@ lSource <- list(
 )
 
 # Step 0 - Data Ingestion - standardize tables/columns names
-mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings")
+mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 mappings_spec <- CombineSpecs(mappings_wf)
 lRaw <- Ingest(lSource, mappings_spec)
 
@@ -63,13 +63,13 @@ lRaw <- Ingest(lSource, mappings_spec)
 mapped <- RunWorkflows(mappings_wf, lRaw)
 
 # Step 2 - Create Metrics - calculate metrics using mapped data
-metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics")
+metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
 analyzed <- RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
-reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting")
+reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
 reporting <- RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed, lWorkflows = metrics_wf)))
 
 # Step 4 - Create KRI Report - create KRI report using reporting data
-module_wf <- MakeWorkflowList(strPath = "workflow/4_modules")
+module_wf <- MakeWorkflowList(strPath = "workflow/4_modules", "gsm.kri")
 lReports <- RunWorkflows(module_wf, reporting)

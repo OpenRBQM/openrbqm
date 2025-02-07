@@ -2,7 +2,8 @@
 
 # Source Data
 lSource <- list(
-    Source_SUBJ = clindata::rawplus_dm,
+    Source_SUBJ = clindata::rawplus_dm %>%
+      mutate(timeontreatment = as.numeric(timeontreatment)),
     Source_AE = clindata::rawplus_ae,
     Source_PD = clindata::ctms_protdev,
     Source_LB = clindata::rawplus_lb,
@@ -41,50 +42,48 @@ lRaw <- list(
       rename(InvestigatorLastName = pi_last_name) %>%
       rename(City = city) %>%
       rename(State = state) %>%
-      rename(Country = country) %>%
-      rename(Status = site_status),
+      rename(Country = country) ,
     Raw_STUDY = lSource$Source_STUDY %>%
-      rename(studyid = protocol_number) %>%
-      rename(Status = status)
+      rename(studyid = protocol_number)
 )
 
 # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
-mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings")
+mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
 mapped <- RunWorkflows(mappings_wf, lRaw)
 
 # Step 2 - Create Metrics - calculate metrics using mapped data
-metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics")
+metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
 analyzed <- RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
-reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting")
+reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
 reporting <- RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed,
                                                        lWorkflows = metrics_wf)))
 
 # Step 4 - Create KRI Reports - create KRI report using reporting data
-module_wf <- MakeWorkflowList(strPath = "workflow/4_modules")
+module_wf <- MakeWorkflowList(strPath = "workflow/4_modules", strPackage = "gsm.kri")
 lReports <- RunWorkflows(module_wf, reporting)
 
 #### 3.2 - Automate data ingestion using Ingest() and CombineSpecs()
 # Step 0 - Data Ingestion - standardize tables/columns names
-mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings")
-mappings_spec <- CombineSpecs(mappings_wf)
-lRaw <- Ingest(lSource, mappings_spec)
+mappings_wf <- MakeWorkflowList(strPath = "workflow/1_mappings", strPackage = "gsm.mapping")
+mappings_spec <- gsm.mapping::CombineSpecs(mappings_wf)
+lRaw <- gsm.mapping::Ingest(lSource, mappings_spec)
 
 # Step 1 - Create Mapped Data Layer - filter, aggregate and join raw data to create mapped data layer
 mapped <- RunWorkflows(mappings_wf, lRaw)
 
 # Step 2 - Create Metrics - calculate metrics using mapped data
-metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics")
+metrics_wf <- MakeWorkflowList(strPath = "workflow/2_metrics", strPackage = "gsm.kri")
 analyzed <- RunWorkflows(metrics_wf, mapped)
 
 # Step 3 - Create Reporting Layer - create reports using metrics data
-reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting")
+reporting_wf <- MakeWorkflowList(strPath = "workflow/3_reporting", strPackage = "gsm.reporting")
 reporting <- RunWorkflows(reporting_wf, c(mapped, list(lAnalyzed = analyzed,
                                                        lWorkflows = metrics_wf)))
 
 # Step 4 - Create KRI Report - create KRI report using reporting data
-module_wf <- MakeWorkflowList(strPath = "workflow/4_modules")
+module_wf <- MakeWorkflowList(strPath = "workflow/4_modules", strPackage = "gsm.kri")
 lReports <- RunWorkflows(module_wf, reporting)
 
 #### 3.4 - Combine steps in to a single workflow
@@ -108,7 +107,7 @@ lCharts <- MakeCharts(
 
 kri_report_path <- Report_KRI(
   lCharts = lCharts,
-  dfResults =  FilterByLatestSnapshotDate(reportingResults),
+  dfResults =  gsm.kri::FilterByLatestSnapshotDate(reportingResults),
   dfGroups =  gsm::reportingGroups,
   dfMetrics = gsm::reportingMetrics
 )

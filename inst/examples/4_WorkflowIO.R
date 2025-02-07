@@ -1,4 +1,4 @@
-load_all()
+devtools::load_all()
 
 LoadData <- function(lWorkflow, lConfig, lData = NULL) {
   lData <- lData
@@ -84,6 +84,6 @@ lConfig <- list(
 )
 
 lMappedData <- RunWorkflows(
-    MakeWorkflowList(strPath = 'workflow/1_mappings'),
+    MakeWorkflowList(strPath = 'workflow/1_mappings', strPackage = "gsm.mapping"),
     lConfig = lConfig
 )

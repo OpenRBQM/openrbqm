@@ -1,7 +1,7 @@
 #### Example 2.1 - Configurable Adverse Event Workflow
 
 # Define YAML workflow
-AE_workflow <- read_yaml(text=
+AE_workflow <- yaml::read_yaml(text=
 'meta:
   Type: Analysis
   ID: kri0001
@@ -78,18 +78,18 @@ AE_data <-list(
   Mapped_SUBJ= clindata::rawplus_dm,
   Mapped_AE= clindata::rawplus_ae
 )
-AE_KRI <- RunWorkflow(lWorkflow = AE_workflow, lData = AE_data)
+AE_KRI <- gsm::RunWorkflow(lWorkflow = AE_workflow, lData = AE_data)
 
 # Create Barchart from workflow
-Widget_BarChart(dfResults = AE_KRI$Analysis_Summary)
+gsm.kri::Widget_BarChart(dfResults = AE_KRI$Analysis_Summary)
 
 #### Example 2.2 - Run Country-Level Metric
 AE_country_workflow <- AE_workflow
 AE_country_workflow$meta$GroupLevel <- "Country"
 AE_country_workflow$steps[[2]]$params$strGroupCol <- "country"
 
-AE_country_KRI <- RunWorkflow(lWorkflow = AE_country_workflow, lData = AE_data)
-Widget_BarChart(dfResults = AE_country_KRI$Analysis_Summary, lMetric = AE_country_workflow$meta)
+AE_country_KRI <- gsm::RunWorkflow(lWorkflow = AE_country_workflow, lData = AE_data)
+gsm.kri::Widget_BarChart(dfResults = AE_country_KRI$Analysis_Summary, lMetric = AE_country_workflow$meta)
 
 #### Example 2.3 - Create SAE workflow
 
@@ -111,8 +111,8 @@ filterStep <- list(list(
 SAE_workflow$steps <- SAE_workflow$steps %>% append(filterStep, after=0)
 
 # Run the updated workflow
-SAE_KRI <- RunWorkflow(lWorkflow = SAE_workflow, lData = AE_data )
-Widget_BarChart(dfResults = SAE_KRI$Analysis_Summary, lMetric = SAE_workflow$meta)
+SAE_KRI <- gsm::RunWorkflow(lWorkflow = SAE_workflow, lData = AE_data )
+gsm.kri::Widget_BarChart(dfResults = SAE_KRI$Analysis_Summary, lMetric = SAE_workflow$meta)
 
 
 

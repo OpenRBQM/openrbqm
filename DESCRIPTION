@@ -3,7 +3,7 @@ Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: c(
     person("Jeremy", "Wildfire", email = "jwildfire@gmail.com", role = c("aut", "cre")),
-    person("Laura", "Maxwell", email = "lkmaxwell23@gmail.com", role = c("aut")),
+    person("Laura", "Maxwell", email = "lkmaxwell23@gmail.com", role = c("aut"))
     )
 Description: What the package does (one paragraph).
 License: Apache License (>= 2)
@@ -24,14 +24,14 @@ Imports:
     rstudioapi,
     utils
 Remotes:
-    gsm.core=Gilead-BioStats/gsm@gsm-core-test,
-    gsm.app==Gilead-BioStats/gsm.app,
-    gsm.datasim==Gilead-BioStats/gsm.datasim,
+    gsm.core=Gilead-BioStats/gsm.core@main,
+    gsm.app=Gilead-BioStats/gsm.app,
+    gsm.datasim=Gilead-BioStats/gsm.datasim@dev,
     gsm.endpoints=Gilead-BioStats/gsm.endpoints,
-    gsm.kri=Gilead-BioStats/gsm.kri,
-    gsm.mapping=Gilead-BioStats/gsm.mapping,
-    gsm.reporting=Gilead-BioStats/gsm.reporting,
-    gsm.template=Gilead-BioStats/gsm.template
+    gsm.kri=Gilead-BioStats/gsm.kri@main,
+    gsm.mapping=Gilead-BioStats/gsm.mapping@main,
+    gsm.reporting=Gilead-BioStats/gsm.reporting@main,
+    gsm.template=Gilead-BioStats/gsm.template@fix-32
 Suggests: 
     knitr,
     rmarkdown

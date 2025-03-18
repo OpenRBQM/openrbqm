@@ -3,7 +3,7 @@ pkgs <- c("gsm.core",
           "gsm.mapping",
           "gsm.kri",
           #"gsm.endpoints",
-          "gsm.template",
+          #"gsm.template",
           "gsm.datasim",
           "gsm.reporting",
           "gsm.app")

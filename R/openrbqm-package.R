@@ -5,10 +5,9 @@
 #' @import gsm.core
 #' @import gsm.app
 #' @import gsm.datasim
-#' @import gsm.endpoints
 #' @import gsm.kri
 #' @import gsm.mapping
 #' @import gsm.reporting
-#' @import gsm.template
+#' @import gsm.qc
 ## usethis namespace: end
 NULL

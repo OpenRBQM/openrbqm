@@ -19,6 +19,7 @@ Imports:
     gsm.kri,
     gsm.mapping,
     gsm.reporting,
+    gsm.qc,
     rstudioapi,
     utils
 Remotes:

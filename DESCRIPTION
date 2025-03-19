@@ -36,6 +36,10 @@ Suggests:
     pander,
     gh,
     riskmetric,
-    stringr
+    stringr,
+    here,
+    covr,
+    tidyr,
+    tibble
 VignetteBuilder: knitr
 URL: https://openrbqm.github.io/openrbqm/

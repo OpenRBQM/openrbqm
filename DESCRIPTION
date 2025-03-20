@@ -32,6 +32,8 @@ Remotes:
     gsm.qc=Gilead-BioStats/gsm.qc@main
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    DT,
+    gt
 VignetteBuilder: knitr
 URL: https://openrbqm.github.io/openrbqm/

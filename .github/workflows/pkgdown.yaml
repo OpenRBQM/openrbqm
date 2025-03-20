@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-name: pkgdown-main
+name: pkgdown
 
 jobs:
   pkgdown-main:
@@ -17,8 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -34,9 +32,10 @@ jobs:
       - name: Generate sample reports
         shell: Rscript {0}
         run: |
-          devtools::load_all()
+          devtools::load_all(dependencies = T)
           dir.create(here::here("pkgdown", "assets"), recursive = TRUE)
           library(gsm.kri)
+          library(gsm.core)
 
           lCharts <- gsm.kri::MakeCharts(
             dfResults = gsm.core::reportingResults,

@@ -8,7 +8,7 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-library(gsm)
+library(gsm.core)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"

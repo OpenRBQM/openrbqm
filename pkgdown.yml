@@ -1,0 +1,15 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  articles/ContributorGuidelines: ContributorGuidelines.html
+  Cookbook: Cookbook.html
+  DataAnalysis: DataAnalysis.html
+  DataModel: DataModel.html
+  DataReporting: DataReporting.html
+  gsmExtensions: gsmExtensions.html
+  articles/KRIMethod: KRIMethod.html
+last_built: 2025-03-20T20:10Z
+urls:
+  reference: https://openrbqm.github.io/openrbqm/reference
+  article: https://openrbqm.github.io/openrbqm/articles

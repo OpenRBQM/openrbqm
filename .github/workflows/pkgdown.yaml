@@ -8,7 +8,7 @@ on:
 name: pkgdown
 
 jobs:
-  pkgdown-main:
+  pkgdown:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown
+          extra-packages: any::pkgdown, any::devtools
           needs: website
 
       - name: Generate sample reports

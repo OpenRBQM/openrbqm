@@ -26,12 +26,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, any::devtools
+          extra-packages: any::pkgdown
           needs: website
 
       - name: Generate sample reports
         shell: Rscript {0}
         run: |
+          install.packages("devtools", "here")
           devtools::load_all()
           dir.create(here::here("pkgdown", "assets"), recursive = TRUE)
           library(gsm.kri)

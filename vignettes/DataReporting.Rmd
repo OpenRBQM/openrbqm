@@ -68,7 +68,7 @@ To run the analysis workflow on all 13 KRIs using `clindata` Raw+ data, use the 
 3. `mapped$Mapped_SUBJ` - mapped data.frame of enrolled participants
 
 ```{r include = TRUE, message = FALSE}
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "PK",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 lSource <- gsm.core::lSource
@@ -298,7 +298,7 @@ Here, you will see how to run your workflows. The general approach is to run the
 ```{r eval = FALSE, include = TRUE}
 # Step 1 - Create Mapped Data - filter/map raw data
 # Source Data
-core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB",
+core_mappings <- c("AE", "COUNTRY", "DATACHG", "DATAENT", "ENROLL", "LB", "PK",
                    "PD", "QUERY", "STUDY", "STUDCOMP", "SDRGCOMP", "SITE", "SUBJ")
 
 lSource <- gsm.core::lSource

@@ -23,13 +23,13 @@ Imports:
     rstudioapi,
     utils
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@main,
+    gsm.core=Gilead-BioStats/gsm.core@v1.1.0,
     gsm.app=Gilead-BioStats/gsm.app,
-    gsm.datasim=Gilead-BioStats/gsm.datasim@fix-37,
-    gsm.kri=Gilead-BioStats/gsm.kri@main,
-    gsm.mapping=Gilead-BioStats/gsm.mapping@main,
-    gsm.reporting=Gilead-BioStats/gsm.reporting@main,
-    gsm.qc=Gilead-BioStats/gsm.qc@main
+    gsm.datasim=Gilead-BioStats/gsm.datasim@v1.0.0,
+    gsm.kri=Gilead-BioStats/gsm.kri@v1.1.0,
+    gsm.mapping=Gilead-BioStats/gsm.mapping@v1.0.1,
+    gsm.reporting=Gilead-BioStats/gsm.reporting@v1.0.1,
+    gsm.qc=Gilead-BioStats/gsm.qc@v1.0.1
 Suggests: 
     knitr,
     rmarkdown,

@@ -1,6 +1,6 @@
 Package: openrbqm
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Jeremy", "Wildfire", email = "jwildfire@gmail.com", role = c("aut", "cre")),
     person("Laura", "Maxwell", email = "lkmaxwell23@gmail.com", role = c("aut"))
@@ -23,15 +23,17 @@ Imports:
     rstudioapi,
     utils
 Remotes:
-    gsm.core=Gilead-BioStats/gsm.core@main,
+    gsm.core=Gilead-BioStats/gsm.core@v1.1.0,
     gsm.app=Gilead-BioStats/gsm.app,
-    gsm.datasim=Gilead-BioStats/gsm.datasim@dev,
-    gsm.kri=Gilead-BioStats/gsm.kri@main,
-    gsm.mapping=Gilead-BioStats/gsm.mapping@main,
-    gsm.reporting=Gilead-BioStats/gsm.reporting@main,
-    gsm.qc=Gilead-BioStats/gsm.qc@main
+    gsm.datasim=Gilead-BioStats/gsm.datasim@v1.0.0,
+    gsm.kri=Gilead-BioStats/gsm.kri@v1.1.0,
+    gsm.mapping=Gilead-BioStats/gsm.mapping@v1.0.1,
+    gsm.reporting=Gilead-BioStats/gsm.reporting@v1.0.1,
+    gsm.qc=Gilead-BioStats/gsm.qc@v1.0.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    DT,
+    gt
 VignetteBuilder: knitr
 URL: https://openrbqm.github.io/openrbqm/
